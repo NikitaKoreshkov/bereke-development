@@ -1,0 +1,145 @@
+@keyframes residentsMarquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-33.333%, 0, 0);
+  }
+}
+
+.root {
+  position: relative;
+  overflow: hidden;
+  padding-block: 0.75rem;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 1.25rem;
+  padding-inline: 0.75rem;
+  animation: residentsMarquee 26s linear infinite;
+  will-change: transform;
+}
+
+.trackReverse {
+  animation-direction: reverse;
+  animation-duration: 22s;
+}
+
+.root:hover .track,
+.root:has(.card:hover) .track {
+  animation-play-state: paused;
+}
+
+.fadeLeft,
+.fadeRight {
+  pointer-events: none;
+  position: absolute;
+  inset-block: 0;
+  z-index: 2;
+  width: 4rem;
+}
+
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(
+    to right,
+    #faf9f7 10%,
+    rgba(250, 249, 247, 0.92) 40%,
+    transparent
+  );
+}
+
+.fadeRight {
+  right: 0;
+  background: linear-gradient(
+    to left,
+    #faf9f7 10%,
+    rgba(250, 249, 247, 0.92) 40%,
+    transparent
+  );
+}
+
+@media (min-width: 640px) {
+  .track {
+    gap: 1.5rem;
+  }
+
+  .fadeLeft,
+  .fadeRight {
+    width: 7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+}
+
+.card {
+  display: flex;
+  height: 4rem;
+  min-width: 8.75rem;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  border: 1px solid rgba(26, 26, 26, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+  padding-inline: 1.25rem;
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6b7280;
+  box-shadow: 0 8px 24px rgba(30, 51, 64, 0.06);
+  backdrop-filter: blur(4px);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.35s ease,
+    border-color 0.35s ease,
+    color 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+.card:hover {
+  border-color: #c9a962;
+  background-color: #c9a962;
+  color: #1a1a1a;
+  box-shadow: 0 12px 28px rgba(201, 169, 98, 0.32);
+  transform: scale(1.05) translateY(-3px);
+}
+
+@media (min-width: 640px) {
+  .card {
+    min-width: 10.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+.gridCard {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  min-height: 5.5rem;
+  font-size: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .gridCard {
+    min-height: 6.5rem;
+    font-size: 0.8125rem;
+  }
+}

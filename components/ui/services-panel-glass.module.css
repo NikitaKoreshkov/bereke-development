@@ -1,0 +1,181 @@
+.shell {
+  --panel-radius: 32px;
+  position: relative;
+  border-radius: var(--panel-radius);
+  overflow: visible;
+  isolation: isolate;
+  background: rgba(255, 255, 255, 0.02);
+  -webkit-backdrop-filter: blur(40px) saturate(1.35);
+  backdrop-filter: blur(40px) saturate(1.35);
+  transform-origin: center center;
+  box-shadow:
+    0 2px 4px rgba(30, 51, 64, 0.04),
+    0 12px 32px rgba(30, 51, 64, 0.1),
+    0 32px 80px rgba(30, 51, 64, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 -1px 0 rgba(30, 51, 64, 0.03);
+}
+
+.shellLight {
+  background: #ffffff;
+  box-shadow:
+    0 4px 8px rgba(16, 18, 16, 0.06),
+    0 18px 46px rgba(16, 18, 16, 0.1),
+    0 44px 112px rgba(16, 18, 16, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 1),
+    inset 0 -1px 0 rgba(21, 21, 19, 0.04);
+}
+
+.shellLight .rim {
+  background: linear-gradient(
+    135deg,
+    rgba(159, 122, 63, 0.18) 0%,
+    rgba(255, 255, 255, 0.9) 40%,
+    rgba(255, 255, 255, 0.7) 60%,
+    rgba(159, 122, 63, 0.12) 100%
+  );
+}
+
+.shellDark {
+  background: #151a24;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 16px 40px rgba(0, 0, 0, 0.28),
+    0 40px 96px rgba(0, 0, 0, 0.32);
+}
+
+.shellDark .rim {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.18) 45%,
+    rgba(255, 255, 255, 0.14) 55%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+}
+
+.shellNeutralRim .rim {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.45) 45%,
+    rgba(255, 255, 255, 0.4) 55%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+}
+
+.shellDark.shellNeutralRim .rim {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.45) 45%,
+    rgba(255, 255, 255, 0.4) 55%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+}
+
+.shellNoRim .rim {
+  display: none;
+}
+
+.shellFlatBlack {
+  background: #000;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.2),
+    0 16px 40px rgba(0, 0, 0, 0.28),
+    0 40px 96px rgba(0, 0, 0, 0.32);
+}
+
+.shellFlatBlack.shellNeutralRim .rim {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.16) 45%,
+    rgba(255, 255, 255, 0.12) 55%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+}
+
+.shellLite {
+  background: rgba(255, 255, 255, 0.04);
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+.shellDark.shellLite {
+  background: #151a24;
+}
+
+/* Calculator — deep ink, distinct from stone navy without muddy brown */
+.shellCalculator {
+  background: #0a0c10;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(201, 169, 98, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.shellCalculator .rim,
+.shellCalculator.shellNeutralRim .rim {
+  background: linear-gradient(
+    135deg,
+    rgba(201, 169, 98, 0.55) 0%,
+    rgba(242, 221, 168, 0.35) 42%,
+    rgba(201, 169, 98, 0.4) 62%,
+    rgba(201, 169, 98, 0.18) 100%
+  );
+}
+
+.rim {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  padding: 1px;
+  pointer-events: none;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.45) 45%,
+    rgba(255, 255, 255, 0.4) 55%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  transition: background 0.12s ease-out;
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  min-height: 0;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+@media (max-width: 1100px) {
+  .shell {
+    --panel-radius: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shell {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
